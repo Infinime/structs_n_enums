@@ -5,3 +5,10 @@ Well I got bored yesterday and I decided to try out the [Rust By Example Book](h
 - (2024-04-13, 18:38pm): Seems um different but interesting, and it's making me think about memory allocation much more than Python would.
 - (2024-04-13, 19:44pm): I have a lot of trouble with the borrowing etc of variables, I kinda get tripped up by it often, for example the `get` function in what is soon to be `linked_list.rs` that i rewrote threw an error when i used `match` but not when i used `if...else`. I remember having some issues like this learning python (objects and classes), so hopefully this irons out later like those did.
 - (2024-04-13, 21:16pm): Just created the [`new_file.exe`](https://github.com/Infinime/structs_n_enums/blob/master/src/new_file.exe) program (based on [`new_file.rs`](https://github.com/Infinime/structs_n_enums/blob/master/src/new_file.rs)) to copy all the content from `main.rs` (where I work on them) to their permanent home in the other files
+
+# Progress
+- tuples.rs: An intro to Tuples and Tuple structs
+- structs_n_enums.rs: the first project i worked on, my first foray into Rust types
+- linked_lists.rs: An implementation of the Linked List data structure using Rust's enum
+- new_file.py: A python file that copies all the content from `main.rs` (where I work on rust files) to their permanent home in the other files
+- new_file.rs: Same thing ass the python one but in Rust
