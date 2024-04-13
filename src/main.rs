@@ -21,20 +21,31 @@ impl List {
         Cons(elem, Box::new(self))
     }
 
+    // // Return the length of the list
+    // fn len(self) -> u32 {
+    //     // `self` has to be matched, because the behavior of this method
+    //     // depends on the variant of `self`
+    //     // `self` has type `&List`, and `*self` has type `List`, matching on a
+    //     // concrete type `T` is preferred over a match on a reference `&T`
+    //     // after Rust 2018 you can use self here and tail (with no ref) below as well,
+    //     // rust will infer &s and ref tail.
+    //     // See https://doc.rust-lang.org/edition-guide/rust-2018/ownership-and-lifetimes/default-match-bindings.html
+    //     // for any future people who are reading this after 13th Apr. 2024, I modified this cos 2024 is too late to use rust 2018 syntax
+    //     match self {
+    //         Cons(_, ref tail) => 1 + tail.len(),
+    //         // Base Case: An empty list has zero length
+    //         Nil => 0
+    //     }
+    // }
+
     // Return the length of the list
     fn len(self) -> u32 {
-        // `self` has to be matched, because the behavior of this method
-        // depends on the variant of `self`
-        // `self` has type `&List`, and `*self` has type `List`, matching on a
-        // concrete type `T` is preferred over a match on a reference `&T`
-        // after Rust 2018 you can use self here and tail (with no ref) below as well,
-        // rust will infer &s and ref tail.
-        // See https://doc.rust-lang.org/edition-guide/rust-2018/ownership-and-lifetimes/default-match-bindings.html
-        // for any future people who are reading this after 13th Apr. 2024, I modified this cos 2024 is too late to use rust 2018 syntax
-        match self {
-            Cons(_, ref tail) => 1 + tail.len(),
+        // Check if self is a Cons node
+        if let Cons(_, tail) = self {
+            1 + tail.len()
+        } else {
             // Base Case: An empty list has zero length
-            Nil => 0
+            0
         }
     }
 
@@ -45,10 +56,10 @@ impl List {
                 // `format!` is similar to `print!`, but returns a heap
                 // allocated string instead of printing to the console
                 format!("{}, {}", head, tail.stringify())
-            },
+            }
             Nil => {
                 format!("Nil")
-            },
+            }
         }
     }
 }
