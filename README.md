@@ -1,6 +1,7 @@
 # What is this?
-Well I got bored yesterday and I decided to try out the [Rust By Example Book](https://doc.rust-lang.org/rust-by-example) to Learn Rust.
+Well I got bored yesterday and I decided to try out the [Rust By Example Book](https://doc.rust-lang.org/rust-by-example) to Learn Rust. `main.rs` is the current rust project or book chapter I'm working on, and I (read:`new_file.exe`) move them to an appropriately named file once done.
 
 # Thoughts so far
 - (2024-04-13, 18:38pm): Seems um different but interesting, and it's making me think about memory allocation much more than Python would.
 - (2024-04-13, 19:44pm): I have a lot of trouble with the borrowing etc of variables, I kinda get tripped up by it often, for example the `get` function in what is soon to be `linked_list.rs` that i rewrote threw an error when i used `match` but not when i used `if...else`. I remember having some issues like this learning python (objects and classes), so hopefully this irons out later like those did.
+- (2024-04-13, 21:16pm): Just created the [`new_file.exe`]() program (based on `new_file.rs`) to copy all the content from `main.rs` (where I work on them) to their permanent home in the other files
