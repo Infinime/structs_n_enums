@@ -1,107 +1,68 @@
-// An attribute to hide warnings for unused code.
-#![allow(dead_code)]
+use crate::List::*;
 
-#[derive(Debug)]
-struct Person {
-    name: String,
-    age: u8,
+enum List {
+    // Cons: Tuple struct that wraps an element and a pointer to the next node
+    Cons(u32, Box<List>),
+    // Nil: A node that signifies the end of the linked list
+    Nil,
 }
 
-// A unit struct
-struct Unit;
-
-// A tuple struct
-struct Pair(i32, f32);
-
-// A struct with two fields
-#[derive(Copy)]
-struct Point {
-    x: f32,
-    y: f32,
-}
-
-impl Clone for Point{
-    fn clone(&self) -> Self {
-        Self { x: self.x.clone(), y: self.y.clone() }
+// Methods can be attached to an enum
+impl List {
+    // Create an empty list
+    fn new() -> List {
+        // `Nil` has type `List`
+        Nil
     }
-}
 
-// Structs can be reused as fields of another struct
-struct Rectangle {
-    // A rectangle can be specified by where the top left and bottom right
-    // corners are in space.
-    top_left: Point,
-    bottom_right: Point,
-}
+    // Consume a list, and return the same list with a new element at its front
+    fn prepend(self, elem: u32) -> List {
+        // `Cons` also has type List
+        Cons(elem, Box::new(self))
+    }
 
-fn rect_area(rect:Rectangle) -> f32 {
-    let Point{x:a,y:b} = rect.top_left;
+    // Return the length of the list
+    fn len(self) -> u32 {
+        // `self` has to be matched, because the behavior of this method
+        // depends on the variant of `self`
+        // `self` has type `&List`, and `*self` has type `List`, matching on a
+        // concrete type `T` is preferred over a match on a reference `&T`
+        // after Rust 2018 you can use self here and tail (with no ref) below as well,
+        // rust will infer &s and ref tail.
+        // See https://doc.rust-lang.org/edition-guide/rust-2018/ownership-and-lifetimes/default-match-bindings.html
+        // for any future people who are reading this after 13th Apr. 2024, I modified this cos 2024 is too late to use rust 2018 syntax
+        match self {
+            Cons(_, ref tail) => 1 + tail.len(),
+            // Base Case: An empty list has zero length
+            Nil => 0
+        }
+    }
 
-    let Point{x:c,y:d} = rect.bottom_right;
-    (c-a)*(b-d)
-}
-
-fn square(p: Point, f:f32)-> Rectangle{
-    Rectangle{
-        top_left: p,
-        bottom_right: {
-            let Point{x:a, y:b} = p;
-            Point{x:a+f, y:b-f}
+    // Return representation of the list as a (heap allocated) string
+    fn stringify(&self) -> String {
+        match *self {
+            Cons(head, ref tail) => {
+                // `format!` is similar to `print!`, but returns a heap
+                // allocated string instead of printing to the console
+                format!("{}, {}", head, tail.stringify())
+            },
+            Nil => {
+                format!("Nil")
+            },
         }
     }
 }
 
 fn main() {
-    // Create struct with field init shorthand
-    let name = String::from("Peter");
-    let age = 27;
-    let peter = Person { name, age };
+    // Create an empty linked list
+    let mut list = List::new();
 
-    // Print debug struct
-    println!("{:?}", peter);
+    // Prepend some elements
+    list = list.prepend(1);
+    list = list.prepend(2);
+    list = list.prepend(3);
 
-    // Instantiate a `Point`
-    let point: Point = Point { x: 10.3, y: 0.4 };
-
-    // Access the fields of the point
-    println!("point coordinates: ({}, {})", point.x, point.y);
-
-    // Make a new point by using struct update syntax to use the fields of our
-    // other one
-    let bottom_right = Point { x: 5.2, ..point };
-
-    // `bottom_right.y` will be the same as `point.y` because we used that field
-    // from `point`
-    println!("second point: ({}, {})", bottom_right.x, bottom_right.y);
-
-    // Destructure the point using a `let` binding
-    let Point { x: left_edge, y: top_edge } = point;
-
-    let _rectangle = Rectangle {
-        // struct instantiation is an expression too
-        top_left: Point { x: left_edge, y: top_edge },
-        bottom_right: bottom_right,
-    };
-
-    // Instantiate a unit struct
-    let _unit = Unit;
-
-    // Instantiate a tuple struct
-    let pair = Pair(1, 0.1);
-
-    // Access the fields of a tuple struct
-    println!("pair contains {:?} and {:?}", pair.0, pair.1);
-
-    // Destructure a tuple struct
-    let Pair(integer, decimal) = pair;
-
-    println!("pair contains {:?} and {:?}", integer, decimal);
-
-    let rect = Rectangle{
-        top_left: Point { x: 0f32, y: 1f32 },
-        bottom_right: Point { x: 4f32, y: 0f32 } // f32 is type casting
-    };
-    println!("area of the rectangle: {}",rect_area(rect));
-    let squ = square(point, 3.0);
-    println!("Area of sample square: {}", rect_area(squ));
+    // Show the final state of the list
+    println!("linked list has length: {}", list.len());
+    println!("{}", list.stringify());
 }
