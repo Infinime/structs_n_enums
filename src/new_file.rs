@@ -8,7 +8,7 @@ fn help(s: &str) {
 fn new_file(to: &str) {
     let _ = rename("main.rs", {
         match to {
-            to if to[to.len()-3..].contains(".rs") => to.to_string(),
+            to if to[to.len()-3..].contains(".rs") => to.to_string(), //if the last 3 letters are .rs
             &_ => format!("{}.rs", to.to_string()),
         }
     });
@@ -17,9 +17,6 @@ fn new_file(to: &str) {
 fn main() {
     let args: Vec<String> = env::args().collect();
     let self_name = &args[0];
-    if args.len() > 2 {
-        panic!("Too many arguments!");
-    }
     match args.len() {
         2 => new_file(&args[1]),
         _ => help(&self_name),
