@@ -16,6 +16,7 @@ fn index_sort(mut arr: Vec<i32>) -> Vec<i32> {
     arr
 }
 fn main() {
+    // reverse tests
     let arrgh = vec![9, 8, 7, 6, 5, 34, 3, 21, 2];
     let sorted_arrgh = vec![34, 21, 9, 8, 7, 6, 5, 3, 2];
     assert_eq!(index_sort(arrgh), sorted_arrgh);
