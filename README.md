@@ -22,4 +22,5 @@ Well I got bored yesterday and I decided to try out the [Rust By Example Book](h
 - new_file.py: A python file that copies all the content from `main.rs` (where I work on rust files) to their permanent home in the other files
 - new_file.rs: Same thing as the python one but in Rust
 - timestamp.rs: A timestamp utility to get the current time and date  in this format: (2024-04-13, 18:38pm) so I can paste into the Thoughts So Far section
+- plus_minus.rs: float formatting go brrrrr
 - index_sort.rs, reverse_index.rs: index sort and reverse index sort algorithm implementations
