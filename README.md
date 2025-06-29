@@ -12,7 +12,7 @@ Well I got bored yesterday and I decided to try out the [Rust By Example Book](h
 - (2025-01-01, 12:30AM): New year new me I guess. First commit of the year. Planning to pivot to crypto maybe.
 - (2025-02-25, 02:38AM): Writing a hackerrank task to learn float formatting
 - (2025-06-22, 08:43PM): Back here again to attack CSLR's Introduction to Algorithms
-- (2025-06-28, 08:54PM): implemented the forward and reverse sorts
+- (2025-06-28, 08:54PM): implemented the forward and reverse index sorts
 
 # Progress
 

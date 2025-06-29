@@ -5,8 +5,6 @@ fn index_sort(mut arr: Vec<i32>) -> Vec<i32> {
         let key = arr[i];
         let mut j = i - 1;
         while arr[j] < key {
-            // go through previous elements and move them
-            // to the right until bro is in the right place
             arr[j + 1] = arr[j];
             arr[j]=key;
             if j == 0 {break};
