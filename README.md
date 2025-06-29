@@ -24,3 +24,4 @@ Well I got bored yesterday and I decided to try out the [Rust By Example Book](h
 - timestamp.rs: A timestamp utility to get the current time and date  in this format: (2024-04-13, 18:38pm) so I can paste into the Thoughts So Far section
 - plus_minus.rs: float formatting go brrrrr
 - index_sort.rs, reverse_index.rs: index sort and reverse index sort algorithm implementations
+- Substitution_sort.rs: can you guys (imaginary audience/fans, hi!) tell that i'm reusing the sort tests lmao. I should probably refactor the tests to be more "rusty"... Can I reuse tests...

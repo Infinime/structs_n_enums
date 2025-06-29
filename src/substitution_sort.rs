@@ -38,52 +38,61 @@ fn min_vec(arr: &Vec<i32>) -> Min {
         index: min_index,
     }
 }
-fn main() {
-    println!("Running sort tests...");
-    // Test with a random vector
-    let arrgh = vec![9, 8, 7, 6, 5, 34, 3, 21, 2];
-    let sorted_arrgh = vec![2, 3, 5, 6, 7, 8, 9, 21, 34];
-    assert_eq!(selection_sort(arrgh), sorted_arrgh);
 
-    // Test with an empty vector
-    let empty_vec: Vec<i32> = vec![];
-    assert_eq!(selection_sort(empty_vec.clone()), empty_vec);
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    // Test with a single element
-    let single_element_vec = vec![42];
-    assert_eq!(
-        selection_sort(single_element_vec.clone()),
-        single_element_vec
-    );
+    #[test]
+    fn test_random_vector() {
+        let arrgh = vec![9, 8, 7, 6, 5, 34, 3, 21, 2];
+        let sorted_arrgh = vec![2, 3, 5, 6, 7, 8, 9, 21, 34];
+        assert_eq!(selection_sort(arrgh), sorted_arrgh);
+    }
 
-    // Test with already sorted vector
-    let sorted_vec = vec![1, 2, 3, 4, 5];
-    assert_eq!(selection_sort(sorted_vec.clone()), sorted_vec);
+    #[test]
+    fn test_empty_vector() {
+        let empty_vec: Vec<i32> = vec![];
+        assert_eq!(selection_sort(empty_vec.clone()), empty_vec);
+    }
 
-    // Test with reverse sorted vector
-    let reverse_sorted_vec = vec![5, 4, 3, 2, 1];
-    let sorted_reverse_vec = vec![1, 2, 3, 4, 5];
-    assert_eq!(selection_sort(reverse_sorted_vec), sorted_reverse_vec);
+    #[test]
+    fn test_single_element() {
+        let single_element_vec = vec![42];
+        assert_eq!(selection_sort(single_element_vec.clone()), single_element_vec);
+    }
 
-    // Test with duplicate elements
-    let duplicate_elements_vec = vec![4, 2, 4, 3, 2];
-    let sorted_duplicate_elements_vec = vec![2, 2, 3, 4, 4];
-    assert_eq!(
-        selection_sort(duplicate_elements_vec),
-        sorted_duplicate_elements_vec
-    );
+    #[test]
+    fn test_sorted_vector() {
+        let sorted_vec = vec![1, 2, 3, 4, 5];
+        assert_eq!(selection_sort(sorted_vec.clone()), sorted_vec);
+    }
 
-    // Test with negative numbers
-    let negative_numbers_vec = vec![-3, -1, -4, -2, 0];
-    let sorted_negative_numbers_vec = vec![-4, -3, -2, -1, 0];
-    assert_eq!(
-        selection_sort(negative_numbers_vec),
-        sorted_negative_numbers_vec
-    );
+    #[test]
+    fn test_reverse_sorted_vector() {
+        let reverse_sorted_vec = vec![5, 4, 3, 2, 1];
+        let sorted_reverse_vec = vec![1, 2, 3, 4, 5];
+        assert_eq!(selection_sort(reverse_sorted_vec), sorted_reverse_vec);
+    }
 
-    // Test with a mix of positive and negative numbers
-    let mixed_numbers_vec = vec![3, -1, 4, -2, 0];
-    let sorted_mixed_numbers_vec = vec![-2, -1, 0, 3, 4];
-    assert_eq!(selection_sort(mixed_numbers_vec), sorted_mixed_numbers_vec);
-    println!("All tests passed successfully");
+    #[test]
+    fn test_duplicate_elements() {
+        let duplicate_elements_vec = vec![4, 2, 4, 3, 2];
+        let sorted_duplicate_elements_vec = vec![2, 2, 3, 4, 4];
+        assert_eq!(selection_sort(duplicate_elements_vec), sorted_duplicate_elements_vec);
+    }
+
+    #[test]
+    fn test_negative_numbers() {
+        let negative_numbers_vec = vec![-3, -1, -4, -2, 0];
+        let sorted_negative_numbers_vec = vec![-4, -3, -2, -1, 0];
+        assert_eq!(selection_sort(negative_numbers_vec), sorted_negative_numbers_vec);
+    }
+
+    #[test]
+    fn test_mixed_numbers() {
+        let mixed_numbers_vec = vec![3, -1, 4, -2, 0];
+        let sorted_mixed_numbers_vec = vec![-2, -1, 0, 3, 4];
+        assert_eq!(selection_sort(mixed_numbers_vec), sorted_mixed_numbers_vec);
+    }
 }
