@@ -95,4 +95,39 @@ mod tests {
         let sorted_mixed_numbers_vec = vec![-2, -1, 0, 3, 4];
         assert_eq!(selection_sort(mixed_numbers_vec), sorted_mixed_numbers_vec);
     }
+
+    #[test]
+    fn test_really_large_vector() {
+        let large_vec: Vec<i32> = (1..=1000).rev().collect();
+        let sorted_large_vec: Vec<i32> = (1..=1000).collect();
+        assert_eq!(selection_sort(large_vec), sorted_large_vec);
+    }
+
+    #[test]
+    fn test_all_same_elements() {
+        let same_elements_vec = vec![7, 7, 7, 7, 7];
+        let sorted_same_elements_vec = vec![7, 7, 7, 7, 7];
+        assert_eq!(selection_sort(same_elements_vec), sorted_same_elements_vec);
+    }
+
+    #[test]
+    fn test_alternating_high_low() {
+        let alternating_vec = vec![1, 100, 2, 99, 3, 98];
+        let sorted_alternating_vec = vec![1, 2, 3, 98, 99, 100];
+        assert_eq!(selection_sort(alternating_vec), sorted_alternating_vec);
+    }
+
+    #[test]
+    fn test_large_negative_numbers() {
+        let large_negative_vec = vec![-1000, -500, -100, -10, -1];
+        let sorted_large_negative_vec = vec![-1000, -500, -100, -10, -1];
+        assert_eq!(selection_sort(large_negative_vec), sorted_large_negative_vec);
+    }
+
+    #[test]
+    fn test_large_positive_numbers() {
+        let large_positive_vec = vec![1000, 500, 100, 10, 1];
+        let sorted_large_positive_vec = vec![1, 10, 100, 500, 1000];
+        assert_eq!(selection_sort(large_positive_vec), sorted_large_positive_vec);
+    }
 }
