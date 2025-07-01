@@ -26,4 +26,4 @@ Well I got bored yesterday and I decided to try out the [Rust By Example Book](h
 - plus_minus.rs: float formatting go brrrrr
 - index_sort.rs, reverse_index.rs: index sort and reverse index sort algorithm implementations
 - Substitution_sort.rs: can you guys (imaginary audience/fans, hi!) tell that i'm reusing the sort tests lmao. I should probably refactor the tests to be more "rusty"... Can I reuse tests...
-- bit_adder: python and rust versinos of the binary adder algorithms with tests in both languages
+- bit_array.[rs, py]: python and rust versions of the binary adder algorithms with tests in both languages
