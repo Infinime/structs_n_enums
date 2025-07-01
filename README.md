@@ -1,6 +1,4 @@
-# What is this?
-
-Well I got bored yesterday and I decided to try out the [Rust By Example Book](https://doc.rust-lang.org/rust-by-example) to Learn Rust. `main.rs` is the current rust project or book chapter I'm working on, and I (read:`new_file.exe`) move them to an appropriately named file once done.
+I decided to try out the [Rust By Example Book](https://doc.rust-lang.org/rust-by-example) to Learn Rust. `main.rs` is the current rust project or book chapter I'm working on, and I (read:`new_file.exe`) move them to an appropriately named file once done.
 
 # Thoughts so far
 
